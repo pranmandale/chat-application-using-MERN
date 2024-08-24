@@ -1,3 +1,5 @@
+// user schema is defined in this file
+
 import mongoose from "mongoose";
 
 const userSchema=mongoose.Schema({
@@ -6,22 +8,22 @@ const userSchema=mongoose.Schema({
         required:true,
     },
     email:{
-        type:string,
+        type:String,
         required:true,
         unique:true
     },
     password:{
-        type:string,
+        type:String,
         required:true,
     },
     confirmPassword:{
-        type:string,
-        required:true,
+        type:String,
+        
     }
 
 },{timestamps:true})   //createdAT & updatedAt
 
-const User=mongoose.model("User",userSchema)
+const User = mongoose.model("User",userSchema)
 
 export default User
 
