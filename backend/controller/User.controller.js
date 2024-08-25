@@ -54,7 +54,13 @@ export const signup = async (req, res) => {
         if(newUser) {
             createTokenAndSaveCookie(newUser._id,res)
             console.log("User created successfully");
-        return res.status(201).json({ message: "User created successfully",newUser });
+        return res.status(201).json({ message: "User created successfully",
+            user:{
+            _id:newUser._id,
+            fullname:newUser.fullname,
+            email:newUser.email
+        }
+         });
 
         }
     
@@ -76,11 +82,13 @@ export const login = async(req,res) => {
             return res.status(400).json({error:"invalid email or password"})
         }
         createTokenAndSaveCookie(user._id, res);
-        res.status(200).json({message:"user logged in successfully",user:{
+        res.status(200).json({message:"user logged in successfully",
+        user:{
             _id:user._id,
             fullname:user.fullname,
             email:user.email
-        }})
+        }
+    })
     } catch (error) {
      console.log(error)
      return res.status(500).json({ error: "Internal server error" });

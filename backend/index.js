@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import cors from 'cors';
 
 import UserRoute from './route/User.route.js';
 
@@ -8,6 +9,8 @@ import UserRoute from './route/User.route.js';
 const app = express();
 
 dotenv.config();
+
+app.use(cors())
 
 // this is middleware for sending request
 app.use(express.json());

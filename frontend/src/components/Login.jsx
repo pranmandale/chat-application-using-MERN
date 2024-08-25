@@ -49,7 +49,8 @@ function Login() {
                         <p>Dont have an account?
                         <span className='text-orange-600 underline cursor-pointer ml-1'>Signup</span>
                         </p>
-                        <input type='submit' value='Login' className='text-white bg-green-500 px-3 py-1 rounded-lg'/>
+                        <input type='submit' value='Login' className='px-4 py-2 text-white bg-green-500 px-3 py-1 rounded-lg 
+                        cursor-pointer hover:bg-green-400'/>
                     </div>
                 </form>
             </div>
