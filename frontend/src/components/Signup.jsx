@@ -563,7 +563,8 @@ function Signup() {
             console.error("Error details:", error); // Detailed error logging
             if (error.response) {
                 // Server responded with a status other than 200 range
-                alert("Error: " + (error.response.data.message || 'An error occurred'));
+                // alert("Error: " + (error.response.data.message || 'An error occurred'));
+                alert("error: "+ error.response.data.error)
             } else if (error.request) {
                 // Request was made but no response was received
                 alert("No response from server. Please try again later.");
