@@ -1,33 +1,37 @@
+
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 
 import UserRoute from './route/User.route.js';
-
 
 const app = express();
 
 dotenv.config();
 
-app.use(cors())
 
-// this is middleware for sending request
+app.use(cookieParser());
+app.use(cors());
+
+// this is middleware
 app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
 const URI = process.env.MONGODB_URI;
 
-try {
-    mongoose.connect(URI)
-    console.log("connected successfully with mongodb")
-} catch (error) {
-    console.log(error)
-}
 
-// this is route
-app.use("/user",UserRoute)
+mongoose.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+        console.log("Connected successfully with MongoDB");
+        app.listen(PORT, () => {
+            console.log(`Server is listening on port ${PORT}`);
+        });
+    })
+    .catch((error) => {
+        console.log("MongoDB connection error: ", error);
+    });
 
-app.listen(PORT, () => {
-  console.log(`server is listening on port ${PORT}`)
-})
+// Route setup
+app.use("/api/user", UserRoute);

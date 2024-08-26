@@ -106,3 +106,41 @@ export const logout = async(req,res) => {
         return res.status(500).json({ error: "Internal server error" });
     }
 }
+
+
+
+export const allusers = async (req, res) => {  
+    try {
+        // logged in user should not be displayed in all the users seciton becoz he is going to chat
+        const loggedInUser = req.user._id;
+        const filteredUsers = await User.find({_id: {$ne:loggedInUser}}).select('-password'); 
+        res.status(200).json(
+            filteredUsers,
+        );
+    } catch (error) {
+        console.error("Error in allusers controller: ", error);
+        return res.status(500).json({ error: "Internal server error" });
+    }
+};
+
+// export const allusers = async (req, res) => {  
+//     try {
+//         // Ensure req.user is defined
+//         if (!req.user) {
+//             console.error("User not authenticated");
+//             return res.status(401).json({ error: "User not authenticated" });
+//         }
+
+//         // Get the logged-in user's ID
+//         const loggedInUser = req.user._id;
+        
+//         // Find all users except the logged-in user and exclude the password field
+//         const filteredUsers = await User.find({ _id: { $ne: loggedInUser } }).select('-password'); 
+        
+//         // Return the filtered users
+//         res.status(200).json(filteredUsers);
+//     } catch (error) {
+//         console.error("Error in allusers controller: ", error);
+//         return res.status(500).json({ error: "Internal server error" });
+//     }
+// };

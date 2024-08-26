@@ -26,7 +26,8 @@ function Login() {
         };
 
         try {
-            const response = await axios.post('http://localhost:3000/user/login', UserInfo);
+            // const response = await axios.post('http://localhost:3000/user/login', UserInfo);
+            const response = await axios.post('/api/user/login', UserInfo);
             console.log("Response data:", response.data); // Debugging line to check response data
             alert("Login successful");
             localStorage.setItem("ChatApp", JSON.stringify(response.data));
