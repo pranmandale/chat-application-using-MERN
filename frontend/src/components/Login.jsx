@@ -2,8 +2,13 @@ import React from 'react'
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import axios from 'axios';
+import { useAuth } from '../context/AuthProvider';
+import { Link } from 'react-router-dom';
 
 function Login() {
+
+
+    const [ authUser, setAuthUser] = useAuth();
 
     const {
         register,
@@ -25,6 +30,7 @@ function Login() {
             console.log("Response data:", response.data); // Debugging line to check response data
             alert("Login successful");
             localStorage.setItem("ChatApp", JSON.stringify(response.data));
+            setAuthUser(response.data)
         } catch (error) {
             console.error("Error details:", error); // Detailed error logging
             if (error.response) {
@@ -94,7 +100,7 @@ function Login() {
                     {/* text and signup button */}
                     <div className='flex justify-between'>
                         <p>Dont have an account?
-                        <span className='text-orange-600 underline cursor-pointer ml-1'>Signup</span>
+                        <Link to={'/signup'} className='text-orange-600 underline cursor-pointer ml-1'>Signup</Link>
                         </p>
                         <input type='submit' value='Login' className='px-4 py-2 text-white bg-green-500 px-3 py-1 rounded-lg 
                         cursor-pointer hover:bg-green-400'/>
