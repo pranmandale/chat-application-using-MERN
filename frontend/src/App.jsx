@@ -3,6 +3,7 @@ import Left from "./Home/left/Left"
 import Right from "./Home/right/Right"
 import Signup from './components/Signup'
 import Login from './components/Login'
+import Loading from './components/Loading'
 import { useAuth } from './context/AuthProvider'
 import { Routes, Route, Navigate } from "react-router-dom"
 
@@ -23,6 +24,7 @@ function App() {
       <Route path='/login' element={authUser? <Navigate to={'/'}/> : <Login />} />
       <Route path='/signup' element={authUser? <Navigate to={'/'}/> : <Signup/>} />
     </Routes>
+    
   )
 }
 

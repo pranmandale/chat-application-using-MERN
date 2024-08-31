@@ -49,7 +49,7 @@ export const sendMessage = async (req, res) => {
 
         // Respond with success message
         res.status(201).json({
-            message: "Message sent successfully",
+            // message: "Message sent successfully",
             newMessage
         });
 

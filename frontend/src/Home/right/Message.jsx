@@ -1,18 +1,26 @@
 import React from 'react'
 
-function Message() {
+function Message({ message }) {
+  const authUser = JSON.parse(localStorage.getItem("ChatApp"))
+  const Itsme = message.senderId === authUser.user._id;
+
+  const chatName = Itsme?"chat-end": "chat-start"
+  const chatColor = Itsme?"bg-blue-900":""
+  
+  console.log(Itsme)
   return (
     <div>
-       <div className='p-4'>
-                <div className="chat chat-start">
-                    <div className="chat-bubble chat-bubble-info">Calm down, Anakin.</div>
-                </div>
-                <div className="chat chat-end">
-                    <div className="chat-bubble chat-bubble-warning">To be on the Council at your age.</div>
-                </div>
-            </div>
+      <div className='p-4'>
+        <div className={`chat ${chatName}`}>
+          <div className={`chat-bubble ${chatColor}`}>{message.message}</div>
+        </div>
+        
+      </div>
     </div>
   )
 }
 
 export default Message
+
+
+
