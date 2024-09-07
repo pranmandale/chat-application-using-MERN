@@ -5,7 +5,7 @@ function Message({ message }) {
   const Itsme = message.senderId === authUser.user._id;
 
   const chatName = Itsme?"chat-end": "chat-start"
-  const chatColor = Itsme?"bg-blue-900":""
+  const chatColor = Itsme?"bg-blue-900":"bg-gray-600"
   
   console.log(Itsme)
   return (
@@ -13,8 +13,7 @@ function Message({ message }) {
       <div className='p-4'>
         <div className={`chat ${chatName}`}>
           <div className={`chat-bubble ${chatColor}`}>{message.message}</div>
-        </div>
-        
+        </div>        
       </div>
     </div>
   )

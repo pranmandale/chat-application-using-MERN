@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import ChatUser from './ChatUser';
 import Messages from './Messages';
 import TypeSend from './TypeSend';
-import UseConversation from '../../zustand/useConversation.js';
+import UseConversation from '../../zustand/UseConversation.js';
 import { useAuth } from '../../context/AuthProvider.jsx';
 
 function Right() {
