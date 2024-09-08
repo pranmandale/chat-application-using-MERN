@@ -23,12 +23,13 @@ function User({ user }) {
       <div className='flex px-8 py-3 space-x-4 duration-300 rounded-md cursor-pointer hover:bg-slate-400'>
         <div className={`avatar ${isOnline?"online":""}`}>
           <div className="w-12 rounded-full">
-            <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" alt="User Avatar" />
+            <img src="https://i.pinimg.com/736x/90/d1/ac/90d1ac48711f63c6a290238c8382632f.jpg" alt="User Avatar" />
           </div>
         </div>
         <div>
           <h1 className='font-bold'>{user.fullname}</h1>
-          <span>{user.email}</span>
+          {/* <span>{user.email}</span> */}
+          <span className='font-semibold'>Say Hi</span>
         </div>
       </div>
     </div>

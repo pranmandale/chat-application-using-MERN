@@ -4,6 +4,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useAuth } from '../context/AuthProvider';
 import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 function Login() {
 
@@ -32,7 +33,8 @@ function Login() {
             // const response = await axios.post('http://localhost:3000/user/login', UserInfo);
             const response = await axios.post('/api/user/login', UserInfo);
             console.log("Response data:", response.data); // Debugging line to check response data
-            alert("Login successful");
+            // alert("Login successful");
+            toast.success("Login successful");
             localStorage.setItem("ChatApp", JSON.stringify(response.data));
             setAuthUser(response.data)
         } catch (error) {
@@ -43,10 +45,11 @@ function Login() {
                 alert("error: "+ error.response.data.error)
             } else if (error.request) {
                 // Request was made but no response was received
-                alert("No response from server. Please try again later.");
+                // alert("No response from server. Please try again later.");
+                toast.error("No response from server. Please try again later.");
             } else {
                 // Something else happened while setting up the request
-                alert(`Error: ${error.message}`);
+                toast.error(`Error: ${error.message}`);
             }
         }
 

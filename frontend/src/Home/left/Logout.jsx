@@ -3,6 +3,7 @@ import { FaSearch } from "react-icons/fa";
 import { BiLogOutCircle } from "react-icons/bi";
 import axios from 'axios';
 import Cookies from 'js-cookie'
+import toast from 'react-hot-toast';
 
 function Logout() {
   const [loading, setLoading] = useState(false);
@@ -13,16 +14,16 @@ function Logout() {
       localStorage.removeItem('ChatApp');
       Cookies.remove('jwt')
       setLoading(false)
-      alert("logout successful")
+      toast.success("logout successful")
       window.location.reload();
     } catch (error) {
       console.log("Error : error in logout", error)
     }
   }
   return (
-    <div className='h-[10vh]'>
+    <div className='h-[10vh] bg-slate-500 rounded-md'>
        <div>
-       <BiLogOutCircle className='text-5xl hover:bg-slate-400 duration-300 cursor-pointer rounded-full p-2 ml-4 mt-1'
+       <BiLogOutCircle className='flex justify-center text-6xl hover:bg-slate-400 duration-300 cursor-pointer rounded-full p-2 ml-4 mt-1'
         onClick={handleLogout}
        />
        </div>

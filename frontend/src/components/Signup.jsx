@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import axios from 'axios';
 import { useAuth } from '../context/AuthProvider';
 import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 function Signup() {
     
@@ -48,7 +49,8 @@ function Signup() {
             // const response = await axios.post('http://localhost:3000/user/signup', UserInfo);
             const response = await axios.post('/api/user/signup', UserInfo);
             console.log("Response data:", response.data); // Debugging line to check response data
-            alert("Signup successful");
+            // alert("Signup successful");
+            toast.success("Signup successful");
             localStorage.setItem("ChatApp", JSON.stringify(response.data));
             setAuthUser(response.data)
         } catch (error) {
@@ -56,13 +58,13 @@ function Signup() {
             if (error.response) {
                 // Server responded with a status other than 200 range
                 // alert("Error: " + (error.response.data.message || 'An error occurred'));
-                alert("error: "+ error.response.data.error)
+                toast.error("error: "+ error.response.data.error)
             } else if (error.request) {
                 // Request was made but no response was received
-                alert("No response from server. Please try again later.");
+                toast.error("No response from server. Please try again later.");
             } else {
                 // Something else happened while setting up the request
-                alert(`Error: ${error.message}`);
+                toast.error(`Error: ${error.message}`);
             }
         }
     };
