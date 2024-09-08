@@ -1,22 +1,23 @@
-import React from 'react'
-import Search from './Search'
-import Users from './Users'
-import Logout from './Logout'
+
+
+import React from "react";
+import Search from "./Search";
+import Users from "./Users";
+import Logout from "./Logout";
 
 function Left() {
   return (
-    <div className=' w-[30%] bg-gray-300 text-gray-700'>
-      {/* we are creating three components search contacts and logout */}
-      <Search/>
-      <div 
-      className='flex-1 overflow-y-auto custom-scroll'
-      style={{minHeight:"calc(84vh - 13vh)"}}>
-
-      <Users/>
+    <div className="w-full bg-gray-300 text-gray-700 ">
+      <Search />
+      <div
+        className=" overflow-y-auto custom-scroll"
+        style={{ minHeight: "calc(84vh - 13vh)" }} // Adjust height if needed
+      >
+        <Users />
       </div>
-      <Logout/>
+      <Logout />
     </div>
-  )
+  );
 }
 
-export default Left
+export default Left;

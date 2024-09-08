@@ -1,13 +1,21 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Custom Scrollbar Style */
+
 .custom-scroll::-webkit-scrollbar {
-    display: none; /* Hides scrollbar for Webkit browsers (Chrome, Safari, etc.) */
+  width: 0;
+  height: 0;
+  background: transparent; /* Ensures no background is shown */
 }
 
 .custom-scroll {
-    scrollbar-width: none; /* Hides scrollbar for Firefox */
-    -ms-overflow-style: none; /* Hides scrollbar for Internet Explorer and Edge */
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+/* Optional: To avoid accidental scroll snapping issues */
+body, html {
+  overscroll-behavior: none;
 }

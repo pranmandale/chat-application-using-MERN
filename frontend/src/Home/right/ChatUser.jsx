@@ -29,7 +29,7 @@ function Chatuser() {
       
       {/* Avatar */}
       <div className="relative avatar">
-        <div className={`w-14 h-14 rounded-full ${isOnline ? 'ring-2 ring-green-500' : ''}`}>
+        <div className={`w-12 h-12 rounded-full ${isOnline ? 'ring-2 ring-green-500' : ''}`}>
           {/* Display user's profile image if available, otherwise use the default */}
           <img
             src={selectedConversation?.profileImage || defaultAvatar}
